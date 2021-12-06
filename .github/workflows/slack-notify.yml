@@ -18,5 +18,5 @@ jobs:
         SLACK_CHANNEL: gordy-test
         MSG_MINIMAL: true
         SLACK_TITLE: New Discussions Update!
-        MESSAGE: 'Post Content :rocket:'
+        MESSAGE: ':rocket:'
         
