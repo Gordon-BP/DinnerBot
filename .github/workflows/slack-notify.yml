@@ -6,6 +6,7 @@ on:
 name: Slack Notification Demo
 jobs:
   slackNotification:
+    body: 
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
@@ -16,5 +17,5 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: BP-Discussions
         SLACK_CHANNEL: gordy-test
-        SLACK_TITLE: GITHUB_EVENT_NAME
+        SLACK_TITLE: ${{github.event.discussion.title}}
         
