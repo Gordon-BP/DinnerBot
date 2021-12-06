@@ -6,7 +6,6 @@ on:
 name: Slack Notification Demo
 jobs:
   slackNotification:
-    body: 
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
