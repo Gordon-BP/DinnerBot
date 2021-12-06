@@ -16,7 +16,5 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: BP-Discussions
         SLACK_CHANNEL: gordy-test
-        MSG_MINIMAL: true
-        SLACK_TITLE: Post Title
-        MESSAGE: categoryId, body
+        SLACK_TITLE: GITHUB_EVENT_NAME
         
