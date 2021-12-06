@@ -17,6 +17,6 @@ jobs:
         SLACK_USERNAME: BP-Discussions
         SLACK_CHANNEL: gordy-test
         MSG_MINIMAL: true
-        SLACK_TITLE: New Discussions Update!
-        MESSAGE: ':rocket:'
+        SLACK_TITLE: Post Title
+        MESSAGE: categoryId, body
         
