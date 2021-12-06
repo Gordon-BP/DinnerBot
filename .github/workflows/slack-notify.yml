@@ -16,5 +16,7 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: BP-Discussions
         SLACK_CHANNEL: gordy-test
+        MSG_MINIMAL: true
         SLACK_TITLE: ${{github.event.discussion.title}}
+        MESSAGE: ${{github.event.discussion.bodyText}}, ${{github.event.discussion.author}}
         
