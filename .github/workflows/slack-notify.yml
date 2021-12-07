@@ -1,14 +1,12 @@
 on:   
   discussion:
-    types: [created, answered]
-  discussion_comment:
-    types: [created]   
+    types: [created]  
 name: Slack Notification Demo
 jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
-    if: ${{ github.event.discussion.category.name }} == "Q&A"
+    if: ${{ github.event.discussion.category.name  == "Q&A" }}
     steps:
       - name: fetch the json value
         run: |
