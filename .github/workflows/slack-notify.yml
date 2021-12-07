@@ -9,15 +9,20 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-      - name: Print Github event
-        id: echo
-        run:  echo "::set-output name=matrix::${{ github.event }}"
+      - name: fetch the json value
+        run: |
+             githubjson=`cat $GITHUB_EVENT_PATH`
+             echo $githubjson
+             number=`echo $(jq -r '.number' <<< "$githubjson")`
+             PRTitle=`echo $(jq -r '.pull_request.title' <<< "$githubjson")`
+             PRUrl=`echo $(jq -r '.pull_request.html_url' <<< "$githubjson")`
+             PRBody=`echo $(jq -r '.pull_request.body' <<< "$githubjson")`
         
       - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.16.0
         with:
-          payload: "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"New Discussion Topic: \"}},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*${{ fromJson(github.event.discussion.title) }}* \"},{\"type\":\"mrkdwn\",\"text\":\"${{ fromJson(github.event.discussion.url) }}\"}]}]}"
+          payload: "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"New Discussion Topic: \"}},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*${{ fromJson(github.event.discussion.title).value }}* \"},{\"type\":\"mrkdwn\",\"text\":\"${{ fromJson(github.event.discussion.url)[0] }}\"}]}]}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
