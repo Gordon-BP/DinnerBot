@@ -22,7 +22,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.16.0
         with:
-          payload: "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"New Discussion Topic: \"}},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*${{ fromJson(github.event.discussion.title) }}* \"},{\"type\":\"mrkdwn\",\"text\":\"${{ fromJson(github.event.discussion.html_url) }}\"}]}]}"
+          payload: "{\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"New Discussion Topic: \"}},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"*${{ github.event.discussion.title }}* \"},{\"type\":\"mrkdwn\",\"text\":\"${{ github.event.discussion.html_url }}\"}]}]}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
