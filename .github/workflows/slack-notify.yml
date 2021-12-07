@@ -18,7 +18,7 @@ jobs:
         SLACK_CHANNEL: gordy-test
         MSG_MINIMAL: true
         SLACK_ICON_EMOJI: ':bell:'
-        SLACK_TITLE: New Discussion Post: ${{github.event.discussion.title}}
+        SLACK_TITLE: 'New Discussion Post: ${{github.event.discussion.title}}'
         SLACK_MSG_AUTHOR: ${{github.event.discussion.author}}
         MESSAGE: ${{github.event.discussion.bodyText}}
         
