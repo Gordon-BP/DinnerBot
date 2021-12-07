@@ -20,6 +20,7 @@ jobs:
         
       - name: Send custom JSON data to Slack workflow
         id: slack
+        if: ${{ github.event.discussion.category.name }} == "Q&A"
         uses: slackapi/slack-github-action@v1.16.0
         with:
           payload: '{"blocks": [{"type": "section","text": {"type": "mrkdwn","text": "*There is a new post to the Botpress Forums!*"}},{"type": "divider"},{"type": "section","text": {"type": "mrkdwn","text": "> *${{ github.event.discussion.title }}* \n> ${{ github.event.discussion.html_url }}"}}]}'
