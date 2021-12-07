@@ -22,7 +22,7 @@ jobs:
         SLACK_MSG_AUTHOR: Posted By- ${{github.event.discussion.author}}
         MESSAGE: Category- ${{github.event.discussion.category.name}
         
-                  Link- ${{github.event.discussion.url}} click'
+                  Link- ${{github.event.discussion.url}} click
                   
 
         
