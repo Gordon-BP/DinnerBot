@@ -12,8 +12,8 @@ jobs:
         uses: slackapi/slack-github-action@v1.16.0
         if: ${{ github.event.discussion.category.name  == 'Community Support' }}
         with:
-          payload: >
-            {
+          payload: >-
+            "{
               "blocks": [{
               "type": "section",
               "text": {
@@ -27,7 +27,7 @@ jobs:
                   }
                 }
               ]
-            }
+            }"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
