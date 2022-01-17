@@ -10,23 +10,9 @@ jobs:
       - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.16.0
-        if: ${{ github.event.discussion.category.name  == 'q-a' }}
+        if: ${{ github.event.discussion.category.name  == 'announcements' }}
         with:
-          payload: >
-            payload: '{
-            "blocks": 
-            [{
-            "type": "section",
-            "text": {
-            "type": "mrkdwn",
-            "text": "*There is a new post to the Botpress Forums!*"}},
-            {"type": "divider"},
-            {"type": "section",
-            "text": 
-            {"type": "mrkdwn","text": "> *${{ github.event.discussion.title }}* \n> ${{ github.event.discussion.html_url }}"
-            }
-            }]
-            }'
+          payload: '{"blocks": [{"type": "section","text": {"type": "mrkdwn","text": "*There is a new post to the Botpress Forums!*"}},{"type": "divider"},{"type": "section","text": {"type": "mrkdwn","text": "> *${{ github.event.discussion.title }}* \n> ${{ github.event.discussion.html_url }}"}}]}'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
